@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const connectToDB = require('./database/db');
 const authRoutes = require('./routes/authRoutes');
+const customer = require('./routes/customer');
+const lead = require('./routes/lead');
 const app = express();
 
 //making connection to database
@@ -14,6 +16,9 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 app.use('/api/auth' , authRoutes);
+app.use('./api/customers' , customer);
+app.use('./api/leads' , lead);
+
 app.get('/' , (req , res) => {
     res.json({
         message: 'CRM Application is running...'
