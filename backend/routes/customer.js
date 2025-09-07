@@ -1,21 +1,23 @@
 const express = require('express');
 const {
     getCustomers,
-    getCustomerById,
+    getCustomer,
     createCustomer,
     updateCustomer,
     deleteCustomer
 } = require('../controllers/customerController');
-const auth = require('../middleware/auth');
+const auth = require('../middleware/authMiddleware');
+
 const router = express.Router();
 
-// All routes require authentication
+// all routes require authentication
 router.use(auth);
 
 router.get('/', getCustomers);
-router.get('/:id', getCustomerById);
+router.get('/:id', getCustomer);
 router.post('/', createCustomer);
 router.put('/:id', updateCustomer);
 router.delete('/:id', deleteCustomer);
 
 module.exports = router;
+

@@ -4,21 +4,20 @@ const {
     createLead,
     updateLead,
     deleteLead,
-    getDashboardData
+    getDashboard
 } = require('../controllers/leadController');
-const auth = require('../middleware/auth');
+const auth = require('../middleware/authMiddleware');
+
 const router = express.Router();
 
-// All routes require authentication
+// all routes reqquire authentication
 router.use(auth);
 
-// Dashboard route
-router.get('/dashboard', getDashboardData);
-
-// Lead routes
+router.get('/dashboard', getDashboard);
 router.get('/customer/:customerId', getLeads);
 router.post('/customer/:customerId', createLead);
 router.put('/customer/:customerId/:leadId', updateLead);
 router.delete('/customer/:customerId/:leadId', deleteLead);
 
 module.exports = router;
+

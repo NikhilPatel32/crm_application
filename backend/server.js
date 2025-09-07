@@ -16,8 +16,8 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 app.use('/api/auth' , authRoutes);
-app.use('./api/customers' , customer);
-app.use('./api/leads' , lead);
+app.use('/api/customers' , customer);
+app.use('/api/leads' , lead);
 
 app.get('/' , (req , res) => {
     res.json({
