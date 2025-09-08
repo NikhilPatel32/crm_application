@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:5173",           
-    "https://crm-application-sigma.vercel.app/" 
+    "https://crm-application-bx5l.vercel.app/" 
   ],
   credentials: true
 }));
