@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCustomers, deleteCustomer } from '../services/Customer';
-import CustomerForm from '../components/Customers/CustomerForm';
-import CustomerDetails from '../components/Customers/CustomerDetails';
+import CustomerForm from '../components/customers/CustomerForm';
+import CustomerDetails from '../components/customers/CustomerDetails';
 import { Eye, Pencil, Trash2 } from 'lucide-react';
 
 const Customers = () => {
