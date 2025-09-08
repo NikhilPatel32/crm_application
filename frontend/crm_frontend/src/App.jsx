@@ -8,7 +8,7 @@ import Customers from './pages/Customers';
 import { logoutUser, getCurrentUser } from './services/Auth';
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,12 +16,19 @@ function App() {
     if (userData) {
       setUser(userData);
     }
+    else{
+      setUser(null);
+    }
     setLoading(false);
   }, []);
 
   const logout = () => {
     logoutUser();
     setUser(null);
+  };
+
+  const isAuthenticated = () => {
+    return user && user.token;
   };
 
   if (loading) {
@@ -35,24 +42,24 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        {user && <Navigation user={user} logout={logout} />}
+        {isAuthenticated() && <Navigation user={user} logout={logout} />}
 
         <Routes>
           <Route 
             path="/login" 
-            element={!user ? <Login setUser={setUser} /> : <Navigate to="/dashboard" />} 
+            element={!isAuthenticated() ? <Login setUser={setUser} /> : <Navigate to="/dashboard" />} 
           />
           <Route 
             path="/register" 
-            element={!user ? <Register setUser={setUser} /> : <Navigate to="/dashboard" />} 
+            element={!isAuthenticated() ? <Register setUser={setUser} /> : <Navigate to="/dashboard" />} 
           />
           <Route 
             path="/dashboard" 
-            element={user ? <Dashboard /> : <Navigate to="/login" />} 
+            element={!isAuthenticated() ? <Dashboard /> : <Navigate to="/login" />} 
           />
           <Route 
             path="/customers" 
-            element={user ? <Customers /> : <Navigate to="/login" />} 
+            element={!isAuthenticated() ? <Customers /> : <Navigate to="/login" />} 
           />
           <Route 
             path="/" 
