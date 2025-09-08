@@ -27,8 +27,9 @@ function App() {
     setUser(null);
   };
 
-  const isAuthenticated = () => {
-    return user && user.token;
+   const isAuthenticated = () => {
+    const token = localStorage.getItem("token");
+    return user && token;
   };
 
   if (loading) {
