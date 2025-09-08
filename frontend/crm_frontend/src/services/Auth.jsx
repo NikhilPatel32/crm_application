@@ -25,11 +25,19 @@ export const logoutUser = () => {
 };
 
 export const getCurrentUser = () => {
-  try{
-  const user = localStorage.getItem("user");
-  return user ? JSON.parse(user) : null;
-  }
-  catch(error){
+  try {
+    const user = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    
+    if (!token) {
+      localStorage.removeItem("user");
+      return null;
+    }
+    
+    return user ? JSON.parse(user) : null;
+  } catch(error) {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     return null;
   }
 };
