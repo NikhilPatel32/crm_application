@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getCustomerById } from '../../services/Customer';
 import { getLeadsByCustomer, createLead, updateLead, deleteLead } from '../../services/Lead';
-import LeadForm from '../Leads/LeadForm';
+import LeadForm from '../leads/LeadForm';
 import { Pencil, Trash2, X } from 'lucide-react';
 
 const CustomerDetails = ({ customer, onClose }) => {
