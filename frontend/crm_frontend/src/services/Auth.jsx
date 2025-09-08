@@ -1,19 +1,19 @@
 import axios from "axios";
-import { API_URL } from "./config";
+import config from "./config";
 
 const getAuthToken = () => {
   return localStorage.getItem("token");
 };
 
 export const registerUser = async (data) => {
-  const res = await axios.post(`${API_URL}/auth/register`, data);
+  const res = await axios.post(`${config.BASE_URL}/auth/register`, data);
   localStorage.setItem("user", JSON.stringify(res.data));
   localStorage.setItem("token", res.data.token);
   return res.data;
 };
 
 export const loginUser = async (data) => {
-  const res = await axios.post(`${API_URL}/auth/login`, data);
+  const res = await axios.post(`${config.BASE_URL}/auth/login`, data);
   localStorage.setItem("user", JSON.stringify(res.data));
   localStorage.setItem("token", res.data.token);
   return res.data;

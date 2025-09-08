@@ -1,10 +1,10 @@
 import axios from "axios";
-import { API_URL } from "./config";
+import config from "./config";
 import { getAuthToken } from "./Auth";
 
 export const getAllCustomers = async (page = 1, search = '') => {
   const token = getAuthToken();
-  const res = await axios.get(`${API_URL}/customers?page=${page}&search=${search}`, {
+  const res = await axios.get(`${config.BASE_URL}/customers?page=${page}&search=${search}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
@@ -12,7 +12,7 @@ export const getAllCustomers = async (page = 1, search = '') => {
 
 export const getCustomerById = async (id) => {
   const token = getAuthToken();
-  const res = await axios.get(`${API_URL}/customers/${id}`, {
+  const res = await axios.get(`${config.BASE_URL}/customers/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
@@ -20,7 +20,7 @@ export const getCustomerById = async (id) => {
 
 export const createCustomer = async (customerData) => {
   const token = getAuthToken();
-  const res = await axios.post(`${API_URL}/customers`, customerData, {
+  const res = await axios.post(`${config.BASE_URL}/customers`, customerData, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
@@ -28,7 +28,7 @@ export const createCustomer = async (customerData) => {
 
 export const updateCustomer = async (id, customerData) => {
   const token = getAuthToken();
-  const res = await axios.put(`${API_URL}/customers/${id}`, customerData, {
+  const res = await axios.put(`${config.BASE_URL}/customers/${id}`, customerData, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
@@ -36,7 +36,7 @@ export const updateCustomer = async (id, customerData) => {
 
 export const deleteCustomer = async (id) => {
   const token = getAuthToken();
-  const res = await axios.delete(`${API_URL}/customers/${id}`, {
+  const res = await axios.delete(`${config.BASE_URL}/customers/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
