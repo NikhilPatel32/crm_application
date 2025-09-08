@@ -56,15 +56,15 @@ function App() {
           />
           <Route 
             path="/dashboard" 
-            element={!isAuthenticated() ? <Dashboard /> : <Navigate to="/login" />} 
+            element={isAuthenticated() ? <Dashboard /> : <Navigate to="/login" />} 
           />
           <Route 
             path="/customers" 
-            element={!isAuthenticated() ? <Customers /> : <Navigate to="/login" />} 
+            element={isAuthenticated() ? <Customers /> : <Navigate to="/login" />} 
           />
           <Route 
             path="/" 
-            element={<Navigate to={user ? "/dashboard" : "/login"} />} 
+            element={<Navigate to={isAuthenticated() ? "/dashboard" : "/login"} />} 
           />
         </Routes>
       </div>
