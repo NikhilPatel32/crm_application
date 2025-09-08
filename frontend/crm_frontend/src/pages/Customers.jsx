@@ -93,6 +93,7 @@ const Customers = () => {
 
     
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        <div className='overflow-x-auto'>
         <table className="w-full table-auto">
           <thead className="bg-gray-50">
             <tr>
@@ -152,6 +153,7 @@ const Customers = () => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
   
